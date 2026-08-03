@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const d=require\\('./font-data.json'\\); const names=Object.keys\\(d\\); for \\(const n of ['Instrument Sans','Inter','Manrope','Fraunces','JetBrains Mono','Geist','Plus Jakarta Sans','Figtree','Instrument Serif','Newsreader','Bricolage Grotesque']\\) console.log\\(n, '->', names.includes\\(n\\) ? 'YES ' + JSON.stringify\\(d[n].weights\\) + ' axes:' + JSON.stringify\\(\\(d[n].axes||[]\\).map\\(a=>a.tag\\)\\) : 'NO'\\)\")",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Read(//c/Users/P Sajid/AppData/Local/ms-playwright/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3123/)",
+      "Bash(\"C:/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=8000 --window-size=1280,7000 --screenshot=home-a.png http://localhost:3123/)",
+      "Bash(sed -i 's/className=\"absolute inset-0 size-full\"/fill/' components/home/approach.tsx components/home/hero.tsx)",
+      "Bash(sed -i 's/className=\"absolute inset-0 size-full transition-transform/fill\\\\n          className=\"transition-transform/' components/home/proof.tsx)",
+      "Bash(sed -i 's/className=\"absolute inset-0 -z-10 size-full\"/fill\\\\n              className=\"-z-10\"/' components/home/closing.tsx)",
+      "Bash(sed -i 's/bg-gradient-to-/bg-linear-to-/g' components/art/valley.tsx components/home/approach.tsx components/ui/primitives.tsx components/home/*.tsx)",
+      "Bash(grep -rn \"fill$\\\\|bg-linear-to-\" components/home components/art)",
+      "Bash(mv components/home/closing.tsx components/sections/cta-band.tsx)",
+      "Bash(sed -i 's/export function ClosingCta/export function CtaBand/' components/sections/cta-band.tsx)",
+      "Bash(sed -i 's|from \"@/components/home/closing\"|from \"@/components/sections/cta-band\"|; s/ClosingCta/CtaBand/g' app/page.tsx)",
+      "Bash(sed -i 's|10 · Closing call to action|Closing call to action — shared by every page|' components/sections/cta-band.tsx)",
+      "Bash(sed -i 's/import { CheckGrid, Globe, HealthCare, HexChain, Ledger, NodeMesh }/import { CheckGrid, HealthCare, HexChain, Ledger, NodeMesh }/' app/services/page.tsx)",
+      "Bash(sed -i '/^void Globe;$/d' app/services/page.tsx)",
+      "Bash(awk 'NR>=99' components/ui/figure.tsx)",
+      "Bash(node -e ' *)",
+      "Bash(node \"C:/Users/PSAJID~1/AppData/Local/Temp/claude/c--projects-2026-indus-valley/daf7e965-93fd-4423-bc1c-441bf4ef02b3/scratchpad/optimise.js\")",
+      "Bash(node scripts/optimise-images.mjs)",
+      "Bash(netstat -ano)",
+      "Bash(python -)"
+    ]
+  }
+}

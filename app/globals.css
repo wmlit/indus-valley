@@ -1,26 +1,229 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------
+   Indus Valley — design tokens
+   Palette drawn from the civilisation the company is named after:
+   fired terracotta, river silt, kiln smoke, chalk-white plaster.
+------------------------------------------------------------------- */
+
+@theme {
+  /* ink */
+  --color-ink: #100e0c;
+  --color-ink-soft: #2c2621;
+  --color-muted: #74695f;
+  --color-faint: #a79c92;
+
+  /* surfaces */
+  --color-chalk: #ffffff;
+  --color-cream: #faf7f3;
+  --color-cream-deep: #f2ebe3;
+  --color-line: #e8e0d6;
+  --color-line-soft: #f0e9e1;
+
+  /* terracotta */
+  --color-clay: #e2622b;
+  --color-clay-deep: #b8431a;
+  --color-clay-soft: #f7dccb;
+  --color-clay-wash: #fdf1e9;
+
+  /* kiln smoke (dark surfaces) */
+  --color-kiln: #241811;
+  --color-kiln-2: #33241a;
+  --color-kiln-3: #4a3527;
+
+  /* river (cool counterweight) */
+  --color-river: #c6d6df;
+  --color-river-deep: #8ba4b4;
+
+  --radius-card: 20px;
+  --radius-slab: 28px;
+
+  --shadow-lift: 0 1px 2px rgb(16 14 12 / 0.04), 0 8px 24px -12px rgb(16 14 12 / 0.12);
+  --shadow-float: 0 2px 4px rgb(16 14 12 / 0.04), 0 24px 60px -24px rgb(16 14 12 / 0.24);
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono-jb), ui-monospace, "SFMono-Regular", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-clay);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.035em;
+  line-height: 1.03;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+/* ------------------------------------------------------------------
+   Scroll reveal — progressive enhancement, see <Reveal />
+------------------------------------------------------------------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.85s var(--ease-out-soft),
+    transform 0.85s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal],
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track,
+  .drift {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Texture
+------------------------------------------------------------------- */
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.38;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.26'/%3E%3C/svg%3E");
+}
+
+.valley-wash {
+  background:
+    radial-gradient(120% 78% at 50% 116%, rgb(226 98 43 / 0.92) 0%, rgb(226 98 43 / 0) 62%),
+    radial-gradient(92% 60% at 50% -14%, rgb(198 214 223 / 0.9) 0%, rgb(198 214 223 / 0) 60%),
+    linear-gradient(180deg, #eff3f5 0%, #faf7f3 36%, #f7e9de 70%, #ec9d68 100%);
+}
+
+.kiln-wash {
+  background:
+    radial-gradient(80% 60% at 12% 6%, rgb(226 98 43 / 0.24) 0%, rgb(226 98 43 / 0) 60%),
+    linear-gradient(150deg, #3b2a1f 0%, #241811 46%, #180f09 100%);
+}
+
+.ember-wash {
+  background:
+    radial-gradient(100% 120% at 100% 0%, rgb(226 98 43 / 0.5) 0%, rgb(226 98 43 / 0) 58%),
+    linear-gradient(160deg, #34241a 0%, #4b3325 52%, #2a1c14 100%);
+}
+
+.mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* ------------------------------------------------------------------
+   Motion
+------------------------------------------------------------------- */
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee var(--marquee-duration, 46s) linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.drift {
+  animation: drift var(--drift-duration, 9s) ease-in-out infinite;
+  animation-delay: var(--drift-delay, 0s);
+}
+
+/* ------------------------------------------------------------------
+   Micro-typography
+------------------------------------------------------------------- */
+
+.micro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.hairline {
+  box-shadow: inset 0 0 0 1px rgb(16 14 12 / 0.07);
+}
+
+.hairline-light {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
 }
