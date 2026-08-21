@@ -3,7 +3,7 @@ import Link from "next/link";
 import { faqs } from "@/lib/site";
 import { PageHero } from "@/components/sections/page-hero";
 import { FaqSection, Split } from "@/components/sections/bits";
-import { DeliveryTimeline, Engagements } from "@/components/sections/engagements";
+import { DeliveryModel, Engagements } from "@/components/sections/engagements";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
@@ -136,7 +136,7 @@ export default function ServicesPage() {
           "Staff augmentation inside your existing delivery team",
           "Managed service where we own the outcome end to end",
         ]}
-        media={<DeliveryTimeline />}
+        media={<DeliveryModel />}
         flip
       />
 

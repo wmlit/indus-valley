@@ -5,7 +5,6 @@ import { ContourField } from "./art/valley";
 
 const quickLinks = [
   { label: "Company", href: "/company" },
-  { label: "Vision & Mission", href: "/vision-mission" },
   { label: "Clients", href: "/clients" },
   { label: "Careers", href: "/careers" },
   { label: "Get in touch", href: "/contact" },

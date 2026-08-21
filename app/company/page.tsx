@@ -3,22 +3,23 @@ import { PageHero } from "@/components/sections/page-hero";
 import { IconGrid, Split } from "@/components/sections/bits";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Offices } from "@/components/sections/offices";
+import { ProofStrip } from "@/components/home/proof";
 import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
 import { Compass, Handshake, Scales } from "@/components/ui/icons";
 import { Container, cx } from "@/components/ui/primitives";
 
 export const metadata: Metadata = {
-  title: "Company",
+  title: "About",
   description:
-    "Since 1996, Indus Valley Consultants has devoted its expertise to understanding client needs — finding the best solution, or building one where none exists.",
+    "Since 1996, Indus Valley Consultants has helped organizations solve complex technology and talent challenges — high-quality IT solutions and resource staffing that optimize operations and produce measurable results.",
 };
 
 const milestones = [
   {
     year: "1996",
     title: "Founded in Ohio",
-    body: "Indus Valley opens in Miamisburg with a single conviction: understand the client's need before proposing anything.",
+    body: "Indus Valley opens in Miamisburg with a single conviction: understand the need before proposing the solution.",
   },
   {
     year: "2000s",
@@ -28,37 +29,37 @@ const milestones = [
   {
     year: "2010s",
     title: "Integration & EPM",
-    body: "Middleware, B2B mappings and enterprise performance management grow into full practices of their own.",
+    body: "Middleware, B2B mappings, and enterprise performance management grow into full practices.",
   },
   {
     year: "Today",
     title: "Thirty years in",
-    body: "Three practices, a testing discipline across all of them, and 34+ enterprise clients who keep calling back.",
+    body: "Three core practices, a testing discipline across all of them, and 34+ enterprise clients who continue to trust us.",
   },
 ];
 
-export default function CompanyPage() {
+export default function AboutPage() {
   return (
     <>
       <PageHero
         slot="COMPANY-HERO"
         px="16:9 · 2400×1350"
         eyebrow="About us"
-        lead="One focus,"
-        trail="for thirty years."
-        sub="Every day at Indus Valley we wake up with one sole focus — to provide our clients with the best IT solutions and help them optimize their operations."
+        lead="One focus."
+        trail="Thirty years."
+        sub="At Indus Valley, we help organizations solve complex technology and talent challenges. We deliver high-quality IT solutions and resource staffing that optimize operations and produce measurable results — the same focus we have held since 1996."
         alt="Calm modern consulting office in mid-morning light"
       />
 
       <Split
-        eyebrow="Since 1996"
-        lead="We simply don't believe"
-        trail="in impossible challenges."
-        body="Since 1996 we have devoted our expertise to understanding client needs — to find them the best solution, or build one if none is available. We are especially adept at offering customised solutions for unique needs. And since trust comes with time, Indus Valley has grown to become the benchmark for quality IT consulting over the thirty years we have been in existence."
+        eyebrow="How we work"
+        lead="Built on understanding,"
+        trail="not assumptions."
+        body="We do not believe in impossible challenges. For three decades we have started every engagement the same way: by understanding the client's real need before proposing anything. When the right solution already exists, we implement it. When it does not, we build it. That approach has made us a trusted partner to enterprise clients who keep coming back."
         bullets={[
           "Senior practitioners, not a bench of juniors",
-          "Onsite, offshore or blended — whatever the work needs",
-          "No matter what you need, our experts deliver over and above expectations",
+          "Onsite, offshore, or blended delivery — matched to the work",
+          "Experts who consistently deliver beyond expectations",
         ]}
         media={
           <Figure
@@ -137,31 +138,37 @@ export default function CompanyPage() {
       </section>
 
       <IconGrid
-        eyebrow="What guides it"
-        lead="Three values,"
-        trail="and no fourth."
-        sub="This mission is guided by our three core values. Everything else is a consequence of them."
+        eyebrow="What guides us"
+        lead="Three values."
+        trail="Nothing else is needed."
         cols={3}
         items={[
           {
             icon: Scales,
             title: "Integrity",
-            body: "We tell you what we find, including when the answer is that you do not need us.",
+            body: "We tell you what we find — including when the best answer is that you do not need us.",
           },
           {
             icon: Compass,
             title: "Industry insight",
-            body: "Thirty years of pattern recognition across payer systems, finance and integration.",
+            body: "Thirty years of pattern recognition across payer systems, finance, integration, and technology delivery.",
           },
           {
             icon: Handshake,
             title: "Client satisfaction",
-            body: "Our vast experience is a testament to the client trust we have gained over the years.",
+            body: "Our longevity is the result of trust earned over hundreds of engagements.",
           },
         ]}
       />
 
-      <Offices />
+      <ProofStrip />
+
+      <Offices
+        eyebrow="Where we work"
+        lead="Two offices."
+        trail="One continuous working day."
+        sub="Senior practitioners sit with the business in Ohio. Delivery continues in Hyderabad after the U.S. day ends — making true 24×7 support a reality, not a slogan."
+      />
 
       <CtaBand />
     </>

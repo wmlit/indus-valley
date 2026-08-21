@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { company, hasOpenRoles, hiringTracks, rolesNote } from "@/lib/site";
+import { company, diceUrl, hiringTracks, rolesNote } from "@/lib/site";
 import { PageHero } from "@/components/sections/page-hero";
 import { IconGrid } from "@/components/sections/bits";
 import { Accordion } from "@/components/ui/accordion";
@@ -10,7 +10,7 @@ import { ArrowRight, Btn, Container, Seal } from "@/components/ui/primitives";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "There are no open positions at Indus Valley Consultants right now. Here is what we hire for, and where to send your CV so we reach you first when a seat opens.",
+    "Current openings at Indus Valley Consultants are posted on Dice. Here is what we hire for, and where to send your CV so we reach you first when a seat opens.",
 };
 
 export default function CareersPage() {
@@ -22,7 +22,7 @@ export default function CareersPage() {
         eyebrow="Careers"
         lead="A part of"
         trail="our big family."
-        sub="We hire across consulting, data engineering and integration throughout the year — and we keep every CV we are sent."
+        sub="We hire across consulting, data engineering and integration throughout the year — openings go up on Dice, and we keep every CV we are sent."
         alt="Small team around a table in a modern office"
       />
 
@@ -33,28 +33,27 @@ export default function CareersPage() {
             <div className="relative overflow-hidden rounded-slab bg-chalk p-8 hairline sm:p-12">
               <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
                 <div>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-cream px-3.5 py-1.5 text-[11.5px] font-medium text-muted hairline">
-                    <span className="size-1.5 rounded-full bg-faint" />
-                    {hasOpenRoles ? "Now hiring" : "Not currently hiring"}
-                  </span>
-                  <h2 className="mt-6 max-w-[16ch] text-[clamp(1.8rem,3.9vw,2.6rem)]">
-                    <span className="text-ink">No open positions</span>{" "}
-                    <span className="text-faint">right now.</span>
+                  <h2 className="max-w-[18ch] text-[clamp(1.8rem,3.9vw,2.6rem)]">
+                    <span className="text-ink">Don&rsquo;t see the right role</span>{" "}
+                    <span className="text-faint">listed?</span>
                   </h2>
                   <p className="mt-6 max-w-[52ch] text-[15px] leading-[1.7] text-muted">
-                    That changes often. Send us your resume and we will keep it on
-                    file, then get in touch as soon as a role matching your
-                    background opens up. It is the fastest route in — most of our
-                    hires come from CVs already on file.
+                    Check out our current openings on Dice — we post new positions
+                    there as they open.
+                  </p>
+                  <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.7] text-muted">
+                    If nothing fits right now, send us your resume anyway. We review
+                    resumes on file first when a new role comes up, so it&rsquo;s a
+                    solid way to get ahead of the next opening.
                   </p>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <Btn href={`mailto:${company.emails.jobs}`} variant="clay">
-                      <Envelope className="size-4" />
-                      Send us your resume
+                    <Btn href={diceUrl} variant="clay">
+                      Current openings on Dice
                       <ArrowRight className="transition-transform duration-300 group-hover/btn:translate-x-0.5" />
                     </Btn>
-                    <Btn href="/company" variant="light">
-                      About the company
+                    <Btn href={`mailto:${company.emails.jobs}`} variant="light">
+                      <Envelope className="size-4" />
+                      Send us your resume
                     </Btn>
                   </div>
                 </div>

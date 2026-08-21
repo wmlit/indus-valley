@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { Split } from "@/components/sections/bits";
-import { DeliveryTimeline } from "@/components/sections/engagements";
+import { DeliveryModel } from "@/components/sections/engagements";
 import { CtaBand } from "@/components/sections/cta-band";
 import { OrderedStack, TangledStack } from "@/components/art/valley";
 import { Compare } from "@/components/ui/compare";
@@ -166,7 +166,7 @@ export default function DigitalIntegrationPage() {
           "Onsite – offshore model implementations",
           "Senior architects who stay through cutover",
         ]}
-        media={<DeliveryTimeline />}
+        media={<DeliveryModel />}
         flip
         className="pb-20 sm:pb-24"
       />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { ChipRow, IconGrid, Split } from "@/components/sections/bits";
 import { CtaBand } from "@/components/sections/cta-band";
-import { RangeBar } from "@/components/art/valley";
+import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
 import {
   AutoCheck,
@@ -11,6 +11,7 @@ import {
   CheckGrid,
   DocSearch,
   Gauge,
+  ShieldCheck,
   Users,
 } from "@/components/ui/icons";
 import { Container, cx } from "@/components/ui/primitives";
@@ -66,7 +67,7 @@ export default function TestingPage() {
           "Automation built to survive the next release, not to demo well",
           "Performance characterised before production finds it for you",
         ]}
-        media={<CoverageCard />}
+        media={<TestingGates />}
         className="pt-20 sm:pt-24"
       />
 
@@ -176,33 +177,95 @@ export default function TestingPage() {
   );
 }
 
-function CoverageCard() {
-  const rows = [
-    { label: "Functional coverage", v: 88, low: "Partial", high: "Complete" },
-    { label: "Regression automated", v: 62, low: "Manual", high: "Automated" },
-    { label: "Performance characterised", v: 74, low: "Unknown", high: "Modelled" },
-  ];
+/* ------------------------------------------------------------------
+   How a release gets through testing
+
+   This replaced a card that scored three dimensions at 88 / 62 / 74.
+   Those figures were illustrative, but a reader sees a percentage and
+   reads it as a measurement — a caption underneath does not undo that.
+   What is drawn here is the discipline itself: three gates a release
+   passes through, in the order it passes them, with nothing quantified
+   that we have not measured on a real engagement.
+------------------------------------------------------------------- */
+
+const gates = [
+  {
+    icon: CheckGrid,
+    label: "Functional",
+    note: "Does it do what the requirement actually says — scoped by someone senior enough to say no.",
+  },
+  {
+    icon: AutoCheck,
+    label: "Automated regression",
+    note: "Built to survive the next release, so it re-runs every time rather than once at go-live.",
+  },
+  {
+    icon: Gauge,
+    label: "Performance",
+    note: "Characterised under load in a controlled run, before production finds the ceiling for you.",
+  },
+];
+
+function TestingGates() {
   return (
-    <div className="rounded-slab bg-chalk p-7 hairline sm:p-9">
-      <span className="micro text-faint">Where a testing assessment lands</span>
-      <div className="mt-8 flex flex-col gap-7">
-        {rows.map((r) => (
-          <div key={r.label}>
-            <div className="flex items-baseline justify-between">
-              <span className="text-[13.5px] text-ink-soft">{r.label}</span>
-              <span className="text-[20px] font-medium tracking-[-0.03em] text-ink tnum">
-                {r.v}
-                <span className="text-[12px] text-muted">%</span>
-              </span>
-            </div>
-            <RangeBar value={r.v} low={r.low} high={r.high} className="mt-3" />
-          </div>
-        ))}
+    <div className="overflow-hidden rounded-slab bg-chalk hairline">
+      <Figure
+        slot="TEST-ASSESS"
+        alt="Frosted glass panels stacked in a test rig, one lit warm"
+        ratio="16/9"
+        px="1600×900"
+        sizes="(max-width: 1024px) 100vw, 560px"
+      />
+
+      <div className="p-7 sm:p-9">
+      <span className="micro text-faint">How a release gets through testing</span>
+
+      <div className="relative mt-8">
+        {/* the spine the release travels down */}
+        <span
+          aria-hidden
+          className="absolute top-4 bottom-14 left-[19px] w-px bg-gradient-to-b from-clay via-clay/45 to-line"
+        />
+
+        <ol className="relative flex flex-col gap-8">
+          {gates.map((g, i) => {
+            const Ico = g.icon;
+            return (
+              <li key={g.label} className="flex gap-5">
+                <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-cream text-clay hairline">
+                  <Ico className="size-[18px]" />
+                </span>
+                <div className="pt-0.5">
+                  <div className="flex items-baseline gap-3">
+                    <span className="micro text-faint tnum">0{i + 1}</span>
+                    <span className="text-[15px] font-medium text-ink">{g.label}</span>
+                  </div>
+                  <p className="mt-2 max-w-[38ch] text-[13px] leading-[1.65] text-muted">
+                    {g.note}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+
+        {/* what comes out the other end */}
+        <div className="relative mt-8 flex items-center gap-5">
+          <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-clay text-white">
+            <ShieldCheck className="size-[18px]" />
+          </span>
+          <span className="text-[15px] font-medium text-ink">
+            Released, with the evidence attached
+          </span>
+        </div>
       </div>
+
       <p className="mt-8 text-[12.5px] leading-snug text-muted">
-        Illustrative of the dimensions we score. Your baseline comes out of the
-        assessment itself.
+        Which gates a given engagement needs comes out of the assessment. Most
+        clients start with the first and add the other two as the suite earns
+        its keep.
       </p>
+      </div>
     </div>
   );
 }

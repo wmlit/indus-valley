@@ -5,7 +5,6 @@ const BASE = "https://www.indusvalley.com";
 const routes: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
   { path: "/company", priority: 0.8 },
-  { path: "/vision-mission", priority: 0.6 },
   { path: "/clients", priority: 0.7 },
   { path: "/services", priority: 0.9 },
   { path: "/services/health-care", priority: 0.8 },

@@ -215,6 +215,12 @@ hold the look.
 > terracotta scattered through. Extremely shallow depth of field so most of the grid falls
 > into bokeh. Abstract and rhythmic. Very wide crop.
 
+### `TEST-ASSESS` · Testing panel · ask 1536×1024 → crop 16:9 → 1600×900
+> **3D render.** A short stack of frosted-glass panels held upright in a matte clay rig,
+> like slides in a test carriage. One panel lit warm terracotta from behind, the rest cool
+> and unlit. Soft studio light, clean cream background, gentle shadow. Reads as something
+> being examined, not as a chart. Octane-style render. No text, no numbers, no UI.
+
 ### `BLK-HERO` · Blockchain opener · ask 1536×1024 → crop 16:9 → 2400×1350
 > **3D render.** Interlocking frosted-glass hexagonal plates forming a chain across the
 > frame, one plate glowing warm terracotta. Deep espresso background, dramatic side light,

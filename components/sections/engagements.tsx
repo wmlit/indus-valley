@@ -77,52 +77,70 @@ export function Engagements({ className }: { className?: string }) {
 }
 
 /* ------------------------------------------------------------------
-   Delivery timeline — the shape of a typical engagement
+   Delivery model — the two offices, and the day they share
+
+   This replaced a twelve-week assessment-to-cutover timeline. That
+   graphic committed the firm to a delivery shape it does not want to
+   sell, and the week numbers on it were illustrative rather than real.
+   What is drawn here instead is a fact already published on the site:
+   two offices, two working days, one continuous one.
 ------------------------------------------------------------------- */
 
-const phases = [
-  { label: "Executive assessment", start: 0, span: 18, tone: "clay", note: "wk 1–2" },
-  { label: "Design & configuration", start: 16, span: 42, tone: "ink", note: "wk 3–8" },
-  { label: "Test, automate, cut over", start: 54, span: 32, tone: "ink", note: "wk 9–12" },
-  { label: "Managed service", start: 84, span: 16, tone: "soft", note: "ongoing" },
+const shifts = [
+  {
+    city: "Miamisburg, Ohio",
+    role: "Engagements owned here",
+    hours: "8AM – 6PM ET",
+    /* the bar is the local working day on a local 24h rail */
+    start: 33,
+    span: 42,
+    tone: "clay",
+  },
+  {
+    city: "Hyderabad, India",
+    role: "Build continues here",
+    hours: "9AM – 7PM IST",
+    start: 37,
+    span: 42,
+    tone: "line",
+  },
 ];
 
-export function DeliveryTimeline() {
+export function DeliveryModel() {
   return (
     <div className="relative overflow-hidden rounded-slab kiln-wash p-6 text-white grain sm:p-8">
       <div className="relative">
-        <span className="micro text-white/40">Typical shape of an engagement</span>
+        <span className="micro text-white/40">How delivery is staffed</span>
         <h3 className="mt-3 max-w-[22ch] text-[20px] text-white sm:text-[23px]">
-          Twelve weeks from assessment to cutover.
+          Two offices. One continuous working day.
         </h3>
       </div>
 
-      <div className="relative mt-9 flex flex-col gap-4">
-        {phases.map((p) => (
-          <div key={p.label}>
-            <div className="flex items-baseline justify-between">
-              <span className="text-[13.5px] text-white/85">{p.label}</span>
-              <span className="micro text-white/35">{p.note}</span>
+      <div className="relative mt-9 flex flex-col gap-7">
+        {shifts.map((sft) => (
+          <div key={sft.city}>
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="text-[13.5px] text-white/85">{sft.city}</span>
+              <span className="micro shrink-0 text-white/35">{sft.hours}</span>
             </div>
-            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/8">
+            <div className="mt-2.5 h-2 w-full overflow-hidden rounded-full bg-white/8">
               <div
-                style={{ marginLeft: `${p.start}%`, width: `${p.span}%` }}
+                style={{ marginLeft: `${sft.start}%`, width: `${sft.span}%` }}
                 className={cx(
                   "h-full rounded-full",
-                  p.tone === "clay" && "bg-clay",
-                  p.tone === "ink" && "bg-white/45",
-                  p.tone === "soft" && "bg-white/20",
+                  sft.tone === "clay" ? "bg-clay" : "bg-white/45",
                 )}
               />
             </div>
+            <span className="mt-2 block text-[12.5px] text-white/40">{sft.role}</span>
           </div>
         ))}
       </div>
 
       <div className="relative mt-9 grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-white/10">
         {[
-          ["Assessment", "1–2 wks"],
-          ["Build", "6 wks"],
+          ["Onshore", "Accountable"],
+          ["Offshore", "Blended"],
           ["Support", "24×7"],
         ].map(([k, v]) => (
           <div key={k} className="bg-kiln px-4 py-4">
@@ -133,8 +151,8 @@ export function DeliveryTimeline() {
       </div>
 
       <p className="relative mt-6 text-[12.5px] leading-snug text-white/40">
-        Indicative. Real sequencing comes out of the assessment — some clients
-        only ever need the first two weeks.
+        Each bar is that office&rsquo;s own working day. Sequencing on any
+        engagement comes out of the assessment, not a template.
       </p>
     </div>
   );

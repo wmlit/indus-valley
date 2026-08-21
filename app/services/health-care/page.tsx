@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { IconGrid, Split } from "@/components/sections/bits";
-import { DeliveryTimeline } from "@/components/sections/engagements";
+import { DeliveryModel } from "@/components/sections/engagements";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
@@ -21,21 +21,29 @@ import { ArrowRight, Container, cx } from "@/components/ui/primitives";
 export const metadata: Metadata = {
   title: "Health Care",
   description:
-    "Healthcare consulting for payers of any size — implementation, upgrades, configuration design, EDI and reporting on Facets™, HealthRules™ and AMISYS Advance™.",
+    "Healthcare consulting for payers and providers of every size — implementation, upgrades, configuration, testing, extracts, interfaces and EDI across Facets™, HealthRules™, AMISYS Advance™, QNXT™ and Epic®.",
 };
 
 const platforms = [
   {
     name: "Facets™",
-    body: "Implementation, upgrade and configuration work supported end to end, with the extracts and interfaces around it.",
+    body: "End-to-end support across implementation, upgrades, configuration and testing, plus the extracts, interfaces and EDI transactions that keep it connected.",
   },
   {
     name: "HealthRules™",
-    body: "Planning through go-live, business analysis and configuration design for payers moving to the platform.",
+    body: "Implementation, upgrades, configuration and testing handled start to finish, backed by extracts, interfaces and EDI transaction support.",
   },
   {
     name: "AMISYS Advance™",
-    body: "Long-standing delivery experience, including EDI transactions and custom development.",
+    body: "From implementation and upgrades through configuration and testing, with full support for extracts, interfaces and EDI transactions.",
+  },
+  {
+    name: "QNXT™",
+    body: "Configuration, testing, upgrades and implementation support, rounded out by extracts, interfaces and EDI transaction work.",
+  },
+  {
+    name: "Epic®",
+    body: "Module support, configuration and testing.",
   },
 ];
 
@@ -46,10 +54,10 @@ export default function HealthCarePage() {
         slot="HC-HERO"
         px="21:9 · 2800×1200"
         eyebrow="Health Care"
-        lead="Payer systems,"
-        trail="delivered by people who run them."
-        sub="Indus Valley Consultants offers healthcare consulting designed for payers of any size — services and solutions that improve processes, increase efficiency and support greater productivity."
-        chips={["Facets™", "HealthRules™", "AMISYS Advance™", "QNXT (testing)"]}
+        lead="Payer and provider systems."
+        trail="Built by the people who actually run them."
+        sub="Indus Valley Consultants delivers healthcare consulting built for payers and providers of every size — practical services and solutions that streamline operations, boost efficiency and drive lasting productivity gains across the platforms you rely on every day."
+        chips={["Facets™", "HealthRules™", "AMISYS Advance™", "QNXT™", "Epic®"]}
         alt="Healthcare payer operations floor in soft daylight"
       />
 
@@ -58,11 +66,11 @@ export default function HealthCarePage() {
         <Container>
           <Reveal>
             <h2 className="max-w-[20ch] text-[clamp(1.8rem,3.9vw,2.7rem)]">
-              <span className="text-ink">Three platforms,</span>{" "}
+              <span className="text-ink">Five platforms,</span>{" "}
               <span className="text-faint">two decades of implementations.</span>
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {platforms.map((p, i) => (
               <Reveal key={p.name} delay={i * 100}>
                 <div
@@ -124,7 +132,7 @@ export default function HealthCarePage() {
         lead="Driving toward a timely,"
         trail="cost-effective project."
         body="Our project management team works with key stakeholders inside your organization to define the implementation strategy and project scope. Our focus is on execution — reducing the overall impact to the business while the work is underway."
-        media={<DeliveryTimeline />}
+        media={<DeliveryModel />}
         flip
       />
 

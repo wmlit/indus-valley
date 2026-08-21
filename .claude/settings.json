@@ -22,7 +22,13 @@
       "Bash(node \"C:/Users/PSAJID~1/AppData/Local/Temp/claude/c--projects-2026-indus-valley/daf7e965-93fd-4423-bc1c-441bf4ef02b3/scratchpad/optimise.js\")",
       "Bash(node scripts/optimise-images.mjs)",
       "Bash(netstat -ano)",
-      "Bash(python -)"
+      "Bash(python -)",
+      "Bash(node -e \"console.log\\(require\\('c:/projects/2026/aqv/node_modules/next/package.json'\\).version\\)\")",
+      "WebFetch(domain:main.d2n79hhajc0mcv.amplifyapp.com)",
+      "Bash(grep -n \"^### \\\\`\" docs/content-inventory.md)"
+    ],
+    "additionalDirectories": [
+      "c:\\projects\\2026\\aqv\\app"
     ]
   }
 }

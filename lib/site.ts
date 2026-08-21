@@ -77,12 +77,7 @@ export const nav: NavItem[] = [
       {
         label: "Company",
         href: "/company",
-        blurb: "Three decades of consulting, and what we learned",
-      },
-      {
-        label: "Vision & Mission",
-        href: "/vision-mission",
-        blurb: "What we are building toward",
+        blurb: "One focus, thirty years — and what guides it",
       },
       {
         label: "Clients",
@@ -368,8 +363,6 @@ export const faqs = [
  * when a seat opens — shown so candidates know whether their background fits
  * before they send a CV. Not job postings.
  */
-export const hasOpenRoles = false;
-
 export const hiringTracks = [
   {
     title: "Senior Software Engineer",
@@ -446,6 +439,9 @@ export const hiringTracks = [
     skills: ["Systems analysis", "Testing", "Monitoring"],
   },
 ];
+
+/** Where open roles are actually posted. */
+export const diceUrl = "https://www.dice.com/companies?page=1";
 
 export const rolesNote =
   "Based in Miamisburg, OH. Work may be performed in various unanticipated locations throughout the U.S.";

@@ -47,8 +47,8 @@ export default function ClientsPage() {
       <PageHero
         eyebrow="Our clients"
         lead="Thirty-four enterprises."
-        trail="Most of them came back."
-        sub="Trust comes with time. These are organisations that engaged us once and then kept engaging us — across payer systems, integration and enterprise performance management."
+        trail="The majority returned for more work."
+        sub="These are organisations that engaged us once and then continued to rely on us — across payer systems, integration and enterprise performance management."
       />
 
       {/* logo wall */}
