@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { ChipRow, IconGrid, Split } from "@/components/sections/bits";
 import { CtaBand } from "@/components/sections/cta-band";
-import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
 import {
   AutoCheck,
@@ -180,92 +179,145 @@ export default function TestingPage() {
 /* ------------------------------------------------------------------
    How a release gets through testing
 
-   This replaced a card that scored three dimensions at 88 / 62 / 74.
-   Those figures were illustrative, but a reader sees a percentage and
-   reads it as a measurement — a caption underneath does not undo that.
-   What is drawn here is the discipline itself: three gates a release
-   passes through, in the order it passes them, with nothing quantified
-   that we have not measured on a real engagement.
+   Replaces a card that scored three dimensions at 88 / 62 / 74. A reader
+   sees a percentage and reads it as a measurement; a caption underneath
+   does not undo that. Drawn here instead is the discipline itself — a
+   run board behind, the three gates a release passes through in front,
+   and nothing quantified that we have not measured on a real engagement.
+
+   The board is deterministic (a hashed sine, no Math.random) so server
+   and client render identical markup and hydration does not drift.
 ------------------------------------------------------------------- */
+
+const COLS = 26;
+const ROWS = 15;
+
+const board = (() => {
+  const cells: { x: number; y: number; tone: "clay" | "river" | "dim"; o: number }[] = [];
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const h = Math.sin(c * 12.9898 + r * 78.233) * 43758.5453;
+      const f = h - Math.floor(h);
+      /* a slow diagonal sweep, so the board reads as a run in progress
+         rather than as noise */
+      const sweep = (Math.sin(c * 0.29 - r * 0.2) + 1) / 2;
+      const tone = f > 0.94 ? "clay" : sweep > 0.52 ? "river" : "dim";
+      cells.push({
+        x: c * 10,
+        y: r * 10,
+        tone,
+        o: tone === "clay" ? 0.75 + f * 0.25 : tone === "river" ? 0.18 + sweep * 0.3 : 0.07 + f * 0.06,
+      });
+    }
+  }
+  return cells;
+})();
+
+function RunBoard({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox={`0 0 ${COLS * 10 - 2} ${ROWS * 10 - 2}`}
+      fill="none"
+      aria-hidden
+      preserveAspectRatio="xMidYMid slice"
+      className={className}
+    >
+      <defs>
+        <linearGradient id="rb-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0.95" />
+          <stop offset="55%" stopColor="#fff" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#fff" stopOpacity="0.08" />
+        </linearGradient>
+        <mask id="rb-mask">
+          <rect width={COLS * 10} height={ROWS * 10} fill="url(#rb-fade)" />
+        </mask>
+      </defs>
+      <g mask="url(#rb-mask)">
+        {board.map((c, i) => (
+          <rect
+            key={i}
+            x={c.x}
+            y={c.y}
+            width="8"
+            height="8"
+            rx="2.4"
+            fill={c.tone === "clay" ? "#E2622B" : "#8BA4B4"}
+            fillOpacity={c.o}
+          />
+        ))}
+      </g>
+    </svg>
+  );
+}
 
 const gates = [
   {
     icon: CheckGrid,
     label: "Functional",
-    note: "Does it do what the requirement actually says — scoped by someone senior enough to say no.",
+    note: "Does it do what the requirement actually says.",
   },
   {
     icon: AutoCheck,
     label: "Automated regression",
-    note: "Built to survive the next release, so it re-runs every time rather than once at go-live.",
+    note: "Built to survive the next release, not to demo well.",
   },
   {
     icon: Gauge,
     label: "Performance",
-    note: "Characterised under load in a controlled run, before production finds the ceiling for you.",
+    note: "Characterised under load before production finds the ceiling.",
   },
 ];
 
 function TestingGates() {
   return (
-    <div className="overflow-hidden rounded-slab bg-chalk hairline">
-      <Figure
-        slot="TEST-ASSESS"
-        alt="Frosted glass panels stacked in a test rig, one lit warm"
-        ratio="16/9"
-        px="1600×900"
-        sizes="(max-width: 1024px) 100vw, 560px"
-      />
+    <div className="relative isolate overflow-hidden rounded-slab kiln-wash p-6 text-white grain sm:p-8">
+      {/* the run board sits behind everything, dissolving downward */}
+      <RunBoard className="pointer-events-none absolute -top-6 -right-4 -left-4 h-[62%] opacity-90" />
 
-      <div className="p-7 sm:p-9">
-      <span className="micro text-faint">How a release gets through testing</span>
+      <div className="relative">
+        <span className="micro text-white/40">How a release gets through testing</span>
+      </div>
 
-      <div className="relative mt-8">
-        {/* the spine the release travels down */}
-        <span
-          aria-hidden
-          className="absolute top-4 bottom-14 left-[19px] w-px bg-gradient-to-b from-clay via-clay/45 to-line"
-        />
-
-        <ol className="relative flex flex-col gap-8">
-          {gates.map((g, i) => {
-            const Ico = g.icon;
-            return (
-              <li key={g.label} className="flex gap-5">
-                <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-cream text-clay hairline">
-                  <Ico className="size-[18px]" />
+      {/* the three gates, as glass over the board */}
+      <ol className="relative mt-[128px] flex flex-col gap-2.5">
+        {gates.map((g, i) => {
+          const Ico = g.icon;
+          return (
+            <li
+              key={g.label}
+              className="flex items-start gap-4 rounded-2xl bg-white/[0.07] p-4 shadow-lift backdrop-blur-md hairline-light"
+            >
+              <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-clay text-white">
+                <Ico className="size-[17px]" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="flex items-baseline gap-2.5">
+                  <span className="micro text-white/35 tnum">0{i + 1}</span>
+                  <span className="text-[14.5px] font-medium text-white">{g.label}</span>
                 </span>
-                <div className="pt-0.5">
-                  <div className="flex items-baseline gap-3">
-                    <span className="micro text-faint tnum">0{i + 1}</span>
-                    <span className="text-[15px] font-medium text-ink">{g.label}</span>
-                  </div>
-                  <p className="mt-2 max-w-[38ch] text-[13px] leading-[1.65] text-muted">
-                    {g.note}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
+                <span className="mt-1 block text-[12.5px] leading-[1.55] text-white/45">
+                  {g.note}
+                </span>
+              </span>
+            </li>
+          );
+        })}
+      </ol>
 
-        {/* what comes out the other end */}
-        <div className="relative mt-8 flex items-center gap-5">
-          <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-clay text-white">
-            <ShieldCheck className="size-[18px]" />
-          </span>
-          <span className="text-[15px] font-medium text-ink">
-            Released, with the evidence attached
-          </span>
-        </div>
+      {/* what comes out the other end */}
+      <div className="relative mt-2.5 flex items-center gap-4 rounded-2xl bg-clay p-4">
+        <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white/15 text-white">
+          <ShieldCheck className="size-[17px]" />
+        </span>
+        <span className="text-[14.5px] font-medium text-white">
+          Released, with the evidence attached
+        </span>
       </div>
 
-      <p className="mt-8 text-[12.5px] leading-snug text-muted">
-        Which gates a given engagement needs comes out of the assessment. Most
-        clients start with the first and add the other two as the suite earns
-        its keep.
+      <p className="relative mt-6 text-[12.5px] leading-snug text-white/40">
+        Which gates an engagement needs comes out of the assessment. Most clients
+        start with the first and add the other two as the suite earns its keep.
       </p>
-      </div>
     </div>
   );
 }
