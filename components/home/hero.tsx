@@ -4,7 +4,7 @@ import { ArrowRight, Btn, Container } from "../ui/primitives";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex h-[94svh] min-h-[640px] flex-col justify-end overflow-hidden">
+    <section className="relative isolate flex min-h-[max(640px,94svh)] flex-col justify-end overflow-hidden">
       <Figure
         slot="HOME-HERO"
         alt="Aerial view of a braided river delta at golden hour"
@@ -15,7 +15,7 @@ export function Hero() {
         fill
       />
 
-      <Container className="relative pb-14 sm:pb-16">
+      <Container className="relative pt-28 pb-14 sm:pt-32 sm:pb-16">
         <Reveal delay={60}>
           <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-[11.5px] font-medium text-white backdrop-blur-md hairline-light">
             <span className="size-1.5 rounded-full bg-clay" />

@@ -3,7 +3,6 @@ import { clients } from "@/lib/site";
 import { PageHero } from "@/components/sections/page-hero";
 import { ChipRow } from "@/components/sections/bits";
 import { CtaBand } from "@/components/sections/cta-band";
-import { Testimonial } from "@/components/home/team";
 import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
 import { ArrowRight, Container, cx } from "@/components/ui/primitives";
@@ -134,8 +133,6 @@ export default function ClientsPage() {
           </div>
         </Container>
       </section>
-
-      <Testimonial />
 
       <ChipRow
         label="Industries we work across"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { company, contacts, faqs } from "@/lib/site";
-import { FaqSection } from "@/components/sections/bits";
+import { FaqSection, Split } from "@/components/sections/bits";
+import { DeliveryModel } from "@/components/sections/engagements";
 import { Offices } from "@/components/sections/offices";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Reveal } from "@/components/ui/reveal";
@@ -98,6 +99,21 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
+
+      <Split
+        eyebrow="Our services"
+        lead="24×7 support,"
+        trail="and an onsite–offshore build."
+        body="Partner with us for end-to-end, future-ready enterprise application integration solutions that bring you closer to your organization's goals at a faster pace."
+        bullets={[
+          "24×7 support and maintenance",
+          "Onsite – offshore model implementations",
+          "Senior architects who stay through cutover",
+        ]}
+        media={<DeliveryModel />}
+        flip
+        className="pb-20 sm:pb-24"
+      />
 
       <Offices
         eyebrow="Catch us in person"

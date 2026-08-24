@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
-import { ChipRow, IconGrid, Split } from "@/components/sections/bits";
+import { ChipRow, Split } from "@/components/sections/bits";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Reveal } from "@/components/ui/reveal";
 import {
   AutoCheck,
-  Blueprint,
-  CalendarArrow,
   CheckGrid,
-  DocSearch,
   Gauge,
   ShieldCheck,
-  Users,
 } from "@/components/ui/icons";
 import { Container, cx } from "@/components/ui/primitives";
 
@@ -20,13 +16,6 @@ export const metadata: Metadata = {
   description:
     "Flexible, scalable testing tailored to the project — functional, automated and performance testing across healthcare, banking, telecom and ERP applications.",
 };
-
-const roles = [
-  { icon: Users, title: "Test Managers", body: "Own the plan, the risk and the go/no-go." },
-  { icon: CheckGrid, title: "Functional / Manual Testers", body: "Depth in the business rules, not just the script." },
-  { icon: AutoCheck, title: "Automation Testers", body: "Suites that survive the next release." },
-  { icon: Gauge, title: "Performance Testers", body: "Load characterised before it reaches production." },
-];
 
 const models = [
   {
@@ -69,52 +58,6 @@ export default function TestingPage() {
         media={<TestingGates />}
         className="pt-20 sm:pt-24"
       />
-
-      <IconGrid
-        eyebrow="Competencies"
-        lead="Nine competencies"
-        trail="that make up the practice."
-        items={[
-          { icon: CalendarArrow, title: "Testing execution and delivery" },
-          { icon: DocSearch, title: "Test requirement engineering" },
-          { icon: Blueprint, title: "Testing programs and projects" },
-          { icon: AutoCheck, title: "Test automation tools" },
-          { icon: Gauge, title: "Performance testing" },
-          { icon: CheckGrid, title: "Testing tool selection" },
-          { icon: Users, title: "Test management tools" },
-          { icon: AutoCheck, title: "Automation & performance tools" },
-          { icon: DocSearch, title: "Defect tools" },
-        ]}
-        cols={3}
-      />
-
-      {/* roles */}
-      <section className="bg-cream pb-20 sm:pb-24">
-        <Container>
-          <Reveal>
-            <h2 className="max-w-[18ch] text-[clamp(1.8rem,3.9vw,2.7rem)]">
-              <span className="text-ink">Four roles</span>{" "}
-              <span className="text-faint">we staff from.</span>
-            </h2>
-          </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {roles.map((r, i) => {
-              const Ico = r.icon;
-              return (
-                <Reveal key={r.title} delay={i * 90}>
-                  <div className="flex h-full flex-col rounded-slab bg-chalk p-6 hairline sm:p-7">
-                    <span className="grid size-11 place-items-center rounded-xl bg-cream text-clay hairline">
-                      <Ico />
-                    </span>
-                    <h3 className="mt-7 text-[16px] font-medium text-ink">{r.title}</h3>
-                    <p className="mt-2 text-[13px] leading-[1.6] text-muted">{r.body}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
 
       {/* delivery models */}
       <section className="bg-cream pb-20 sm:pb-24">

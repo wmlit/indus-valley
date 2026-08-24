@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
-import { ChipRow, Split } from "@/components/sections/bits";
+import { ChipRow } from "@/components/sections/bits";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Sparkline } from "@/components/art/valley";
 import { Reveal } from "@/components/ui/reveal";
@@ -85,19 +85,6 @@ export default function EpmBiPage() {
           </div>
         </Container>
       </section>
-
-      <Split
-        eyebrow="The close"
-        lead="Eleven days down to six,"
-        trail="and it stayed there."
-        body="A shorter close is not a reporting problem — it is a consolidation, reconciliation and ownership problem. We work the three together, then hand you something your team can run without us."
-        bullets={[
-          "Consolidation logic documented and owned inside your team",
-          "Reconciliations aged and evidenced, not rediscovered each month",
-          "Reporting rebuilt on the numbers the close actually produces",
-        ]}
-        media={<CloseCycle />}
-      />
 
       <ChipRow
         label="Toolset we work in"
@@ -230,40 +217,5 @@ function DashboardGrid() {
       <rect x="22" y="62" width="60" height="5" rx="2.5" fill="#E2622B" />
       <rect x="90" y="62" width="88" height="5" rx="2.5" fill="rgba(16,14,12,0.12)" />
     </Frame>
-  );
-}
-
-function CloseCycle() {
-  const rows = [
-    { label: "Before", days: 11.4, w: 100, tone: "ink" },
-    { label: "After", days: 6.2, w: 54, tone: "clay" },
-  ];
-  return (
-    <div className="rounded-slab bg-chalk p-7 hairline sm:p-9">
-      <span className="micro text-faint">Close cycle, working days</span>
-      <div className="mt-7 flex flex-col gap-6">
-        {rows.map((r) => (
-          <div key={r.label}>
-            <div className="flex items-baseline justify-between">
-              <span className="text-[13.5px] text-ink-soft">{r.label}</span>
-              <span className="text-[22px] font-medium tracking-[-0.03em] text-ink tnum">
-                {r.days}
-                <span className="ml-1 text-[12px] text-muted">days</span>
-              </span>
-            </div>
-            <div className="mt-2.5 h-2.5 w-full overflow-hidden rounded-full bg-line">
-              <div
-                style={{ width: `${r.w}%` }}
-                className={cx("h-full rounded-full", r.tone === "clay" ? "bg-clay" : "bg-ink/25")}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="mt-7 text-[12.5px] leading-snug text-muted">
-        Illustrative of the pattern we work toward. Actual baselines and targets
-        come out of the assessment.
-      </p>
-    </div>
   );
 }
