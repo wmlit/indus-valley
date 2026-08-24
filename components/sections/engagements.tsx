@@ -137,7 +137,9 @@ export function DeliveryModel() {
         ))}
       </div>
 
-      <div className="relative mt-9 grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-white/10">
+      {/* three across needs ~92px of text room per cell; a 375px phone leaves 66,
+          which clips "Accountable" against the parent overflow-hidden */}
+      <div className="relative mt-9 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-3">
         {[
           ["Onshore", "Accountable"],
           ["Offshore", "Blended"],

@@ -29,9 +29,9 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-5 text-[14.5px] leading-[1.7] text-white/50">
-              Every day at Indus Valley, we wake up with one sole focus — to provide
-              our clients with the best IT solutions and help them optimize their
-              operations.
+              At Indus Valley, our focus is delivering exceptional IT solutions and
+              skilled resource staffing that help clients optimize operations and
+              drive efficiency.
             </p>
             <a
               href={`mailto:${company.emails.general}`}

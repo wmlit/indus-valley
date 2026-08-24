@@ -17,9 +17,9 @@ const people = [
 
 const platforms = [
   { name: "Facets™", state: "Delivered" },
+  { name: "QNXT™", state: "Delivered" },
   { name: "HealthRules™", state: "Delivered" },
   { name: "AMISYS Advance™", state: "Delivered" },
-  { name: "QNXT", state: "Tested" },
 ];
 
 export function WhoDelivers() {
@@ -195,40 +195,5 @@ function Gauge() {
         <span className="micro mt-2 text-white/40">Years</span>
       </div>
     </div>
-  );
-}
-
-/* ------------------------------------------------------------------
-   9 · Testimonial
-------------------------------------------------------------------- */
-
-export function Testimonial() {
-  return (
-    <section className="bg-cream py-20 sm:py-28">
-      <Container>
-        <Reveal>
-          <figure className="relative overflow-hidden rounded-slab bg-chalk px-6 py-12 hairline sm:px-14 sm:py-16">
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -top-10 left-4 text-[190px] leading-none font-semibold text-clay/10 select-none sm:left-8"
-            >
-              &ldquo;
-            </span>
-            <blockquote className="relative mx-auto max-w-[62ch] text-center text-[clamp(1.05rem,2.1vw,1.45rem)] leading-[1.5] tracking-[-0.02em] text-ink">
-              {testimonial.quote}
-            </blockquote>
-            <figcaption className="relative mt-10 flex flex-col items-center gap-1">
-              <span className="grid size-10 place-items-center rounded-full bg-clay text-[13px] font-semibold text-white">
-                EZ
-              </span>
-              <span className="mt-3 text-[14.5px] font-medium text-ink">{testimonial.name}</span>
-              <span className="text-[13px] text-muted">
-                {testimonial.role}, {testimonial.org}
-              </span>
-            </figcaption>
-          </figure>
-        </Reveal>
-      </Container>
-    </section>
   );
 }

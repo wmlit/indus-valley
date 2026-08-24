@@ -246,8 +246,15 @@ export const newWay = [
 export const capabilities = [
   {
     group: "Health Care",
-    count: 12,
+    count: 14,
     items: [
+      /* platforms lead — they are what a payer searches for */
+      "Facets™",
+      "QNXT™",
+      "HealthRules™",
+      "AMISYS Advance™",
+      "Epic®",
+      "Test Services",
       "Implementation & upgrades",
       "Project planning and oversight",
       "Configuration design",
@@ -256,10 +263,6 @@ export const capabilities = [
       "EDI transactions",
       "Business intelligence & reporting",
       "Functional, automated & performance testing",
-      "Facets™ delivery",
-      "HealthRules™ delivery",
-      "AMISYS Advance™ delivery",
-      "QNXT testing",
     ],
   },
   {
@@ -361,7 +364,7 @@ export const faqs = [
 /**
  * There are no current openings. These are the tracks Indus Valley hires into
  * when a seat opens — shown so candidates know whether their background fits
- * before they send a CV. Not job postings.
+ * before they send a resume. Not job postings.
  */
 export const hiringTracks = [
   {
@@ -442,9 +445,6 @@ export const hiringTracks = [
 
 /** Where open roles are actually posted. */
 export const diceUrl = "https://www.dice.com/companies?page=1";
-
-export const rolesNote =
-  "Based in Miamisburg, OH. Work may be performed in various unanticipated locations throughout the U.S.";
 
 /* ------------------------------------------------------------------ */
 

@@ -1,16 +1,22 @@
 import { company } from "@/lib/site";
 import { Figure } from "../ui/figure";
 import { Reveal } from "../ui/reveal";
-import { Envelope, Phone } from "../ui/icons";
-import { ArrowRight, Btn, Container, Seal } from "../ui/primitives";
+import { Phone } from "../ui/icons";
+import { ArrowRight, Btn, Container, Seal, cx } from "../ui/primitives";
 
 /* ------------------------------------------------------------------
    Closing call to action — shared by every page
 ------------------------------------------------------------------- */
 
-export function CtaBand() {
+/**
+ * Most pages precede this with a section that already carries `pb-20`, so the
+ * band needs no top padding of its own. Pages that end on a full-bleed slab
+ * (the homepage closes on the kiln-dark Who delivers) pass their own `pt-*`,
+ * otherwise the two butt straight up against each other.
+ */
+export function CtaBand({ className }: { className?: string }) {
   return (
-    <section className="bg-cream pb-20 sm:pb-24">
+    <section className={cx("bg-cream pb-20 sm:pb-24", className)}>
       <Container>
         <Reveal>
           <div className="relative isolate overflow-hidden rounded-slab px-6 py-16 text-center sm:px-12 sm:py-24">
@@ -35,18 +41,17 @@ export function CtaBand() {
                 Tell us what you are running and what is in the way. We will tell you
                 honestly whether we are the right people for it.
               </p>
+              {/* email removed at the client's request — the phone is now the
+                  only CTA here, so it takes the primary treatment rather than
+                  standing alone as a ghost button */}
               <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
-                <Btn href={`mailto:${company.emails.general}`} variant="light">
-                  <Envelope className="size-4" />
-                  {company.emails.general}
-                  <ArrowRight className="transition-transform duration-300 group-hover/btn:translate-x-0.5" />
-                </Btn>
                 <Btn
                   href={`tel:${company.phones.main.replace(/[^\d]/g, "")}`}
-                  className="border-0 bg-white/12 text-white backdrop-blur-md hairline-light hover:bg-white/22"
+                  variant="light"
                 >
                   <Phone className="size-4" />
                   {company.phones.main}
+                  <ArrowRight className="transition-transform duration-300 group-hover/btn:translate-x-0.5" />
                 </Btn>
               </div>
             </div>

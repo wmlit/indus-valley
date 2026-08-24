@@ -24,7 +24,7 @@ const milestones = [
   {
     year: "2000s",
     title: "The payer practice",
-    body: "Healthcare consulting takes shape around Facets, and later HealthRules and AMISYS Advance.",
+    body: "Healthcare consulting takes shape around Facets, QNXT, AMISYS Advance, and later HealthRules.",
   },
   {
     year: "2010s",

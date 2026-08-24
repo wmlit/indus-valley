@@ -53,7 +53,7 @@ export function PageHero({
   }
 
   return (
-    <section className="relative isolate flex h-[66svh] min-h-[460px] flex-col justify-end overflow-hidden">
+    <section className="relative isolate flex min-h-[max(460px,66svh)] flex-col justify-end overflow-hidden">
       <Figure
         slot={slot}
         alt={alt ?? lead}
@@ -63,7 +63,7 @@ export function PageHero({
         scrim="bottom"
         fill
       />
-      <Container className="relative pb-12 sm:pb-16">
+      <Container className="relative pt-28 pb-12 sm:pt-32 sm:pb-16">
         {eyebrow ? (
           <Reveal>
             <span className="micro text-white/60">{eyebrow}</span>
