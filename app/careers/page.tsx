@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { company, diceUrl } from "@/lib/site";
+import { company, diceUrl, openRoles } from "@/lib/site";
 import { PageHero } from "@/components/sections/page-hero";
 import { Reveal } from "@/components/ui/reveal";
 import { ArrowRight, Btn, Container, Seal } from "@/components/ui/primitives";
@@ -22,6 +22,58 @@ export default function CareersPage() {
         sub="We hire across consulting, data engineering and integration throughout the year — openings go up on Dice, and we keep every resume we are sent."
         alt="Small team around a table in a modern office"
       />
+
+      {/* live postings — each row goes straight to its Dice listing */}
+      <section className="bg-cream pt-20 sm:pt-24">
+        <Container>
+          <Reveal>
+            <h2 className="max-w-[20ch] text-[clamp(1.8rem,3.9vw,2.7rem)]">
+              <span className="text-ink">
+                {openRoles.length === 1 ? "One role open" : `${openRoles.length} roles open`}
+              </span>{" "}
+              <span className="text-faint">right now.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="mt-5 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
+              Each one links straight through to its posting on Dice, where you can
+              read the full description and apply.
+            </p>
+          </Reveal>
+
+          <ul className="mt-10 flex flex-col gap-3">
+            {openRoles.map((r, i) => (
+              <Reveal key={r.href} delay={160 + i * 90}>
+                <li>
+                  <a
+                    href={r.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-start justify-between gap-5 rounded-slab bg-chalk p-6 hairline transition-colors duration-300 hover:bg-clay-wash sm:flex-row sm:items-center sm:p-7"
+                  >
+                    <span className="min-w-0">
+                      <span className="block text-[19px] tracking-[-0.02em] text-ink">
+                        {r.title}
+                      </span>
+                      <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-muted">
+                        <span>{r.location}</span>
+                        <span aria-hidden className="text-line">|</span>
+                        <span>{r.terms}</span>
+                      </span>
+                    </span>
+                    <span className="flex shrink-0 items-center gap-3">
+                      <span className="micro text-faint">View on Dice</span>
+                      <span className="grid size-10 place-items-center rounded-full bg-ink text-cream transition-transform duration-300 group-hover:translate-x-1">
+                        <ArrowRight />
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
       {/* the honest bit, first */}
       <section className="bg-cream py-20 sm:py-24">

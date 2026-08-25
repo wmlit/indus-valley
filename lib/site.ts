@@ -444,7 +444,27 @@ export const hiringTracks = [
 ];
 
 /** Where open roles are actually posted. */
-export const diceUrl = "https://www.dice.com/companies?page=1";
+export const diceUrl = "https://www.dice.com/jobs?q=Indus+Valley&radius=30&radiusUnit=mi";
+
+/**
+ * Live postings, each linking straight to its Dice listing. Titles, locations
+ * and terms are taken from the Dice postings themselves — when a role closes,
+ * delete the entry; the page renders the empty case on its own.
+ */
+export const openRoles = [
+  {
+    title: "Front-End Architect",
+    location: "Jersey City, New Jersey",
+    terms: "Contract · 6 months",
+    href: "https://www.dice.com/jobs?q=Indus+Valley&radius=30&radiusUnit=mi&selectedJobId=7d08d21b-ec2f-4e8a-91b1-628e5b543a40",
+  },
+  {
+    title: "SSIS Developer",
+    location: "Columbia, Tennessee",
+    terms: "Contract to hire · 6 months",
+    href: "https://www.dice.com/jobs?q=Indus+Valley&radius=30&radiusUnit=mi&selectedJobId=78a9d115-ad48-46ac-8d21-8445807010bf",
+  },
+];
 
 /* ------------------------------------------------------------------ */
 

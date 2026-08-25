@@ -3,19 +3,16 @@ import { PageHero } from "@/components/sections/page-hero";
 import { Split } from "@/components/sections/bits";
 import { DeliveryModel } from "@/components/sections/engagements";
 import { CtaBand } from "@/components/sections/cta-band";
-import { OrderedStack, TangledStack } from "@/components/art/valley";
-import { Compare } from "@/components/ui/compare";
 import { Figure } from "@/components/ui/figure";
 import { Reveal } from "@/components/ui/reveal";
 import {
   Blueprint,
   CloudLink,
-  Drag,
   Exchange,
   Gauge,
   NodeMesh,
 } from "@/components/ui/icons";
-import { Container, SectionHeading, cx } from "@/components/ui/primitives";
+import { Container, cx } from "@/components/ui/primitives";
 
 export const metadata: Metadata = {
   title: "Digital Integration",
@@ -69,36 +66,6 @@ export default function DigitalIntegrationPage() {
         chips={["Hybrid integration", "B2B services", "EAI", "24×7 support"]}
         alt="Warm-lit data centre aisle in soft focus"
       />
-
-      {/* the argument, made visually */}
-      <section className="bg-cream py-20 sm:py-24">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="The problem, drawn"
-              lead="Point-to-point works,"
-              trail="right up until it doesn't."
-              sub="Every new connection is cheap on its own. Forty of them, each owned by someone who has since left, is the thing that stops a modernisation programme."
-              className="mx-auto"
-            />
-          </Reveal>
-
-          <Reveal delay={140} className="mx-auto mt-12 max-w-[860px]">
-            <Compare
-              className="aspect-[16/10]"
-              caption="Integration landscape"
-              beforeLabel="Point to point"
-              afterLabel="Integrated"
-              before={<TangledStack />}
-              after={<OrderedStack />}
-            />
-            <span className="micro mt-4 flex items-center justify-center gap-2 text-faint">
-              <Drag className="size-4" />
-              Drag to compare
-            </span>
-          </Reveal>
-        </Container>
-      </section>
 
       {/* capability bento */}
       <section className="bg-cream pb-20 sm:pb-24">
