@@ -7,7 +7,7 @@ import {
   TargetState,
   type Icon,
 } from "../ui/icons";
-import { Container, SectionHeading, Seal, cx } from "../ui/primitives";
+import { Container, SectionHeading, cx } from "../ui/primitives";
 
 const newIcons: Icon[] = [MapContour, TargetState, Route, ShieldCheck];
 
@@ -21,7 +21,6 @@ export function Approach() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="A different approach"
             lead="A fresh approach to"
             trail="modernising what you already run."
             sub="Most vendors arrive with a product to sell and a template to fill. That is how enterprises end up replacing systems that only ever needed connecting."
@@ -36,7 +35,6 @@ export function Approach() {
               title="The new way, the way we do it."
               steps={newWay}
               icons={newIcons}
-              badge
             />
           </Reveal>
         </div>
@@ -50,13 +48,11 @@ function StepSlab({
   title,
   steps,
   icons,
-  badge,
 }: {
   tone: "light" | "dark";
   title: string;
   steps: { title: string; body: string }[];
   icons: Icon[];
-  badge?: boolean;
 }) {
   const dark = tone === "dark";
   return (
@@ -66,16 +62,10 @@ function StepSlab({
         dark ? "ember-wash text-white grain" : "bg-cream-deep/70 hairline",
       )}
     >
-      <div className="relative flex items-center justify-between gap-4">
+      <div className="relative">
         <h3 className={cx("text-[clamp(1.35rem,2.6vw,1.8rem)]", dark ? "text-white" : "text-ink")}>
           {title}
         </h3>
-        {badge ? (
-          <span className="flex shrink-0 items-center gap-2 rounded-full bg-white/12 py-1.5 pr-1.5 pl-3.5 text-[11.5px] font-medium text-white/85 backdrop-blur-sm hairline-light">
-            By Indus Valley
-            <Seal className="size-5" tone="dark" />
-          </span>
-        ) : null}
       </div>
 
       <div

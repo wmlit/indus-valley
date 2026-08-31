@@ -39,6 +39,17 @@ export function ContactForm() {
         We read every message. Expect a reply from a person, not a sequence.
       </p>
 
+      {/* delivery failed (no field errors, but a message came back) — without
+          this the form silently re-renders and the visitor assumes it sent */}
+      {!state.ok && state.message ? (
+        <p
+          role="alert"
+          className="mt-6 rounded-2xl bg-clay-wash p-4 text-[13.5px] leading-[1.6] text-clay-deep"
+        >
+          {state.message}
+        </p>
+      ) : null}
+
       <div className="mt-8 flex flex-col gap-5">
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
@@ -68,7 +79,7 @@ export function ContactForm() {
             autoComplete="organization"
           />
           <label className="flex flex-col gap-2">
-            <span className="micro text-faint">What it's about</span>
+            <span className="micro text-faint">What it&rsquo;s about</span>
             <select
               name="interest"
               defaultValue={state.values.interest}

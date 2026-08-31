@@ -1,7 +1,6 @@
 import { capabilities } from "@/lib/site";
 import { Accordion } from "../ui/accordion";
 import { Reveal } from "../ui/reveal";
-import { CheckCircle } from "../ui/icons";
 import { Container, SectionHeading } from "../ui/primitives";
 
 /* ------------------------------------------------------------------
@@ -20,23 +19,11 @@ export function CapabilityIndex() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Capability index"
             lead={`${total} delivery capabilities,`}
             trail="across three practices."
             sub="The full list of what our consultants actually do on client sites — grouped the way we staff it."
             className="mx-auto"
           />
-        </Reveal>
-
-        <Reveal delay={120}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {["Onsite, offshore or blended", "Testing runs across every practice"].map((t) => (
-              <span key={t} className="flex items-center gap-2 text-[13.5px] text-muted">
-                <CheckCircle className="size-[18px] text-clay" />
-                {t}
-              </span>
-            ))}
-          </div>
         </Reveal>
 
         <Reveal delay={200} className="mx-auto mt-12 max-w-[880px]">

@@ -1,6 +1,7 @@
 "use server";
 
 import { company } from "@/lib/site";
+import { deliverEnquiry } from "@/lib/mail";
 import { emptyValues, type ContactState } from "./contact-state";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -37,13 +38,20 @@ export async function submitEnquiry(
     return { ok: false, message: "", errors, values };
   }
 
-  // TODO: wire to a transport (SMTP relay, Resend, SES) or the CRM inbox.
-  // Until then the enquiry is logged server-side and the page also shows the
-  // direct mailto route, so nothing is silently dropped.
-  console.info("[contact] enquiry received", {
-    ...values,
-    routeTo: company.emails.general,
-  });
+  try {
+    await deliverEnquiry(values);
+  } catch (err) {
+    /* Log the whole enquiry, not just the error — if delivery is broken the
+       server log is the only remaining copy of the lead. */
+    console.error("[contact] delivery FAILED", { ...values, err });
+    return {
+      ok: false,
+      message: `We could not send that just now. Please email ${company.emails.general} directly, or call ${company.phones.main} — your message is below so you can copy it.`,
+      errors: {},
+      // hand back what they typed; losing it on top of a failed send is worse
+      values,
+    };
+  }
 
   return {
     ok: true,

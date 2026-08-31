@@ -44,7 +44,6 @@ export default function ClientsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our clients"
         lead="Thirty-four enterprises."
         trail="The majority returned for more work."
         sub="These are organisations that engaged us once and then continued to rely on us — across payer systems, integration and enterprise performance management."

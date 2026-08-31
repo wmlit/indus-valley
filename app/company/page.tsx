@@ -44,7 +44,6 @@ export default function AboutPage() {
       <PageHero
         slot="COMPANY-HERO"
         px="16:9 · 2400×1350"
-        eyebrow="About us"
         lead="One focus."
         trail="Thirty years."
         sub="At Indus Valley, we help organizations solve complex technology and talent challenges. We deliver high-quality IT solutions and resource staffing that optimize operations and produce measurable results — the same focus we have held since 1996."
@@ -52,7 +51,6 @@ export default function AboutPage() {
       />
 
       <Split
-        eyebrow="How we work"
         lead="Built on understanding,"
         trail="not assumptions."
         body="We do not believe in impossible challenges. For three decades we have started every engagement the same way: by understanding the client's real need before proposing anything. When the right solution already exists, we implement it. When it does not, we build it. That approach has made us a trusted partner to enterprise clients who keep coming back."
@@ -138,7 +136,6 @@ export default function AboutPage() {
       </section>
 
       <IconGrid
-        eyebrow="What guides us"
         lead="Three values."
         trail="Nothing else is needed."
         cols={3}
@@ -164,7 +161,6 @@ export default function AboutPage() {
       <ProofStrip />
 
       <Offices
-        eyebrow="Where we work"
         lead="Two offices."
         trail="One continuous working day."
         sub="Senior practitioners sit with the business in Ohio. Delivery continues in Hyderabad after the U.S. day ends — making true 24×7 support a reality, not a slogan."

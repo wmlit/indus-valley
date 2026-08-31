@@ -60,7 +60,7 @@ export default function TestingPage() {
       />
 
       {/* delivery models */}
-      <section className="bg-cream pb-20 sm:pb-24">
+      {/* <section className="bg-cream pb-20 sm:pb-24">
         <Container>
           <Reveal>
             <h2 className="max-w-[18ch] text-[clamp(1.8rem,3.9vw,2.7rem)]">
@@ -101,7 +101,7 @@ export default function TestingPage() {
             ))}
           </div>
         </Container>
-      </section>
+      </section> */}
 
       <ChipRow
         label="Industries we test across"

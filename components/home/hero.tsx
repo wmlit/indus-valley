@@ -16,14 +16,7 @@ export function Hero() {
       />
 
       <Container className="relative pt-28 pb-14 sm:pt-32 sm:pb-16">
-        <Reveal delay={60}>
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-[11.5px] font-medium text-white backdrop-blur-md hairline-light">
-            <span className="size-1.5 rounded-full bg-clay" />
-            IT services &amp; consulting since 1996
-          </span>
-        </Reveal>
-
-        <Reveal delay={160} as="h1" className="mt-7 max-w-[15ch] text-[clamp(2.7rem,7.2vw,5.6rem)] leading-[0.95]">
+        <Reveal delay={160} as="h1" className="max-w-[15ch] text-[clamp(2.7rem,7.2vw,5.6rem)] leading-[0.95]">
           <span className="block text-white">Unlocking value</span>
           <span className="block text-white/60">through continuous innovation</span>
         </Reveal>

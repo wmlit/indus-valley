@@ -25,11 +25,18 @@ export function Offices({
   return (
     <section className={cx("bg-cream pb-20 sm:pb-24", className)}>
       <Container>
-        <Reveal>
-          <span className="micro text-clay">{eyebrow}</span>
-        </Reveal>
+        {eyebrow ? (
+          <Reveal>
+            <span className="micro text-clay">{eyebrow}</span>
+          </Reveal>
+        ) : null}
         <Reveal delay={80}>
-          <h2 className="mt-5 max-w-[20ch] text-[clamp(1.8rem,3.9vw,2.7rem)]">
+          <h2
+            className={cx(
+              "max-w-[20ch] text-[clamp(1.8rem,3.9vw,2.7rem)]",
+              eyebrow && "mt-5",
+            )}
+          >
             <span className="text-ink">{lead}</span>{" "}
             <span className="text-faint">{trail}</span>
           </h2>
