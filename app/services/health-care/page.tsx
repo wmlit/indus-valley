@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { IconGrid, Split } from "@/components/sections/bits";
 import { DeliveryModel } from "@/components/sections/engagements";
@@ -13,10 +12,9 @@ import {
   CheckGrid,
   DocSearch,
   Exchange,
-  Gauge,
   Plug,
 } from "@/components/ui/icons";
-import { ArrowRight, Container, cx } from "@/components/ui/primitives";
+import { Container, cx } from "@/components/ui/primitives";
 
 export const metadata: Metadata = {
   title: "Health Care",
@@ -53,7 +51,6 @@ export default function HealthCarePage() {
       <PageHero
         slot="HC-HERO"
         px="21:9 · 2800×1200"
-        eyebrow="Health Care"
         lead="Payer and provider systems."
         trail="Built by the people who actually run them."
         sub="Indus Valley Consultants delivers healthcare consulting built for payers and providers of every size — practical services and solutions that streamline operations, boost efficiency and drive lasting productivity gains across the platforms you rely on every day."
@@ -106,7 +103,6 @@ export default function HealthCarePage() {
       </section>
 
       <Split
-        eyebrow="Implementation & upgrades"
         lead="From planning phase"
         trail="to actual go-live."
         body="Indus Valley Consultants leverages the experience gained from supporting nearly two decades of implementations and upgrades, so your organization can continue the path to success."
@@ -128,7 +124,6 @@ export default function HealthCarePage() {
       />
 
       <Split
-        eyebrow="Project planning & oversight"
         lead="Driving toward a timely,"
         trail="cost-effective project."
         body="Our project management team works with key stakeholders inside your organization to define the implementation strategy and project scope. Our focus is on execution — reducing the overall impact to the business while the work is underway."
@@ -137,7 +132,6 @@ export default function HealthCarePage() {
       />
 
       <IconGrid
-        eyebrow="Practice areas"
         lead="Eight disciplines"
         trail="staffed from within the practice."
         items={[
@@ -151,37 +145,6 @@ export default function HealthCarePage() {
           { icon: CheckGrid, title: "Testing", body: "Functional, automated and performance" },
         ]}
       />
-
-      {/* testing cross-link */}
-      <section id="testing" className="scroll-mt-28 bg-cream pb-20 sm:pb-24">
-        <Container>
-          <Reveal>
-            <Link
-              href="/services/testing"
-              className="group flex flex-col items-start justify-between gap-6 rounded-slab bg-chalk p-7 hairline transition-colors duration-300 hover:bg-clay-wash sm:flex-row sm:items-center sm:p-9"
-            >
-              <div className="flex items-start gap-5">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-cream text-clay hairline">
-                  <Gauge />
-                </span>
-                <div>
-                  <h2 className="text-[19px] text-ink">
-                    Testing services, across every practice
-                  </h2>
-                  <p className="mt-2 max-w-[58ch] text-[13.5px] leading-[1.6] text-muted">
-                    Successful completion of testing is a key component of any project.
-                    Nine competencies, four roles and three delivery models — now a
-                    practice of its own.
-                  </p>
-                </div>
-              </div>
-              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-cream transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight />
-              </span>
-            </Link>
-          </Reveal>
-        </Container>
-      </section>
 
       <CtaBand />
     </>

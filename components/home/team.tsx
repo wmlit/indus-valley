@@ -1,4 +1,3 @@
-import { testimonial } from "@/lib/site";
 import { Counter } from "../ui/counter";
 import { Figure } from "../ui/figure";
 import { Reveal } from "../ui/reveal";
@@ -140,9 +139,6 @@ export function WhoDelivers() {
                 <p className="text-[15px] leading-snug text-white">
                   Middleware strategy, B2B mappings over the standard EDI framework,
                   and custom webMethods rollouts.
-                </p>
-                <p className="mt-4 text-[12.5px] text-white/55">
-                  {testimonial.org} — a favored vendor relationship.
                 </p>
               </div>
             </div>
