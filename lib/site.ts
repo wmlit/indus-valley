@@ -91,11 +91,6 @@ export const nav: NavItem[] = [
     href: "/services",
     children: [
       {
-        label: "All services",
-        href: "/services",
-        blurb: "Three practices, one delivery discipline",
-      },
-      {
         label: "Health Care",
         href: "/services/health-care",
         blurb: "Facets, HealthRules and AMISYS Advance delivery",
