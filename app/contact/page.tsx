@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { company, contacts, faqs } from "@/lib/site";
-import { FaqSection, Split } from "@/components/sections/bits";
+import { company, contacts } from "@/lib/site";
+import { Split } from "@/components/sections/bits";
 import { DeliveryModel } from "@/components/sections/engagements";
 import { Offices } from "@/components/sections/offices";
 import { ContactForm } from "@/components/contact/contact-form";
@@ -122,7 +122,6 @@ export default function ContactPage() {
         sub="The Ohio office owns the engagement. Hyderabad picks it up as the US day ends — between them the working day does not really stop."
       />
 
-      <FaqSection items={faqs} lead="Before you write," trail="these come up a lot." />
     </>
   );
 }
